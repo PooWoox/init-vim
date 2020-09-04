@@ -79,6 +79,7 @@ nnoremap <c-p> :Files<cr>
 nnoremap <leader>y "*y
 nnoremap <leader>l <c-w>l
 nnoremap <leader>h <c-w>h
+nnoremap <esc> :noh<return><esc>
 nmap <c-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
@@ -122,9 +123,5 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \ 'coc-tsserver',
   \ 'coc-eslint', 
-  \ 'coc-prettier', 
   \ 'coc-json', 
   \ ]
-
-"Format on save with Prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
