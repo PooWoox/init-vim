@@ -1,12 +1,18 @@
 call plug#begin()
+Plug 'itchyny/vim-gitbranch'
+Plug 'itchyny/lightline.vim'
+Plug 'turbio/bracey.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sainnhe/sonokai'
 Plug 'sheerun/vim-polyglot'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'roxma/nvim-completion-manager'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -15,27 +21,40 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-if has('termguicolors')
-      set termguicolors
-    endif
+let g:lightline = {
+    \ 'colorscheme': 'monokay_tasty',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'gitbranch#name'
+    \ },
+    \ }
 
-let g:sonokai_style = 'atlantis'
 
-colorscheme sonokai
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+"IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
 
 let g:NERDTreeGitStatusWithFlags = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:NERDTreeGitStatusNodeColorization = 1
-let g:NERDTreeColorMapCustom = {
-    \ "Staged"    : "#0ee375",  
-    \ "Modified"  : "#d9bf91",  
-    \ "Renamed"   : "#51C9FC",  
-    \ "Untracked" : "#FCE77C",  
-    \ "Unmerged"  : "#FC51E6",  
-    \ "Dirty"     : "#FFBD61",  
-    \ "Clean"     : "#87939A",   
-    \ "Ignored"   : "#808080"   
-    \ }                         
+"let g:NERDTreeColorMapCustom = {
+    "\ "Staged"    : "#0ee375",  
+    "\ "Modified"  : "#d9bf91",  
+    "\ "Renamed"   : "#51C9FC",  
+    "\ "Untracked" : "#FCE77C",  
+    "\ "Unmerged"  : "#FC51E6",  
+    "\ "Dirty"     : "#FFBD61",  
+    "\ "Clean"     : "#87939A",   
+    "\ "Ignored"   : "#808080"   
+    "\ }                         
 
 
 let g:NERDTreeIgnore = ['^node_modules$']
@@ -62,13 +81,12 @@ filetype plugin indent on
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
+set noshowmode
 set hidden
 set number
 set relativenumber
 set inccommand=split
 set splitright
-set guifont=Fira\ Code:h8
 
 let mapleader="\<space>"
 nnoremap <leader>; A;<esc>
@@ -83,6 +101,7 @@ nnoremap <esc> :noh<return><esc>
 nmap <c-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
+nnoremap <leader>f :exe ':silent !firefox %'<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -122,6 +141,4 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-json', 
   \ ]
