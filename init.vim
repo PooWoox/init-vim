@@ -1,4 +1,7 @@
 call plug#begin()
+Plug 'autozimu/LanguageClient-neovim'
+Plug 'elzr/vim-json'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'turbio/bracey.vim'
@@ -45,16 +48,16 @@ set completeopt=noinsert,menuone,noselect
 let g:NERDTreeGitStatusWithFlags = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-    "\ "Staged"    : "#0ee375",  
-    "\ "Modified"  : "#d9bf91",  
-    "\ "Renamed"   : "#51C9FC",  
-    "\ "Untracked" : "#FCE77C",  
-    "\ "Unmerged"  : "#FC51E6",  
-    "\ "Dirty"     : "#FFBD61",  
-    "\ "Clean"     : "#87939A",   
-    "\ "Ignored"   : "#808080"   
-    "\ }                         
+let g:NERDTreeColorMapCustom = {
+    \ "Staged"    : "#0ee375",  
+    \ "Modified"  : "#d9bf91",  
+    \ "Renamed"   : "#51C9FC",  
+    \ "Untracked" : "#FCE77C",  
+    \ "Unmerged"  : "#FC51E6",  
+    \ "Dirty"     : "#FFBD61",  
+    \ "Clean"     : "#87939A",   
+    \ "Ignored"   : "#808080"   
+    \ }                         
 
 
 let g:NERDTreeIgnore = ['^node_modules$']
@@ -89,7 +92,6 @@ set inccommand=split
 set splitright
 
 let mapleader="\<space>"
-nnoremap <leader>; A;<esc>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>nv :vsplit <cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
@@ -97,14 +99,15 @@ nnoremap <c-p> :Files<cr>
 nnoremap <leader>y "*y
 nnoremap <leader>l <c-w>l
 nnoremap <leader>h <c-w>h
-nnoremap <esc> :noh<return><esc>
+nnoremap <leader>/ :noh<return><esc>
 nmap <c-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
+
+"Opens file in browser
 nnoremap <leader>f :exe ':silent !firefox %'<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<c-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
