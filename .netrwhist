@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =0
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/rodrigo/Documents/Programming/petbit'
 let g:netrw_dirhist_0='/home/rodrigo/Documents/Programming/JavaScript30/17 - Sort Without Articles'
 let g:netrw_dirhist_9='/home/rodrigo/Documents/Programming/JavaScript30'
 let g:netrw_dirhist_8='/home/rodrigo/Documents/Programming/JavaScript30/17 - Sort Without Articles'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_5='/home/rodrigo/Documents/portal-v32'
 let g:netrw_dirhist_4='/home/rodrigo/Documents'
 let g:netrw_dirhist_3='/home/rodrigo/Documents/portal-v32'
 let g:netrw_dirhist_2='/home/rodrigo/Documents/portal-v32/src'
-let g:netrw_dirhist_1='/home/rodrigo/Documents/portal-v32'

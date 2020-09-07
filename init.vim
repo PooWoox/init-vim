@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'turbio/bracey.vim'
@@ -48,4 +49,11 @@ nmap ++ <plug>NERDCommenterToggle
 
 "Opens file in browser
 nnoremap <leader>f :exe ':silent !firefox %'<CR>
+
+nmap <silent> K :call CocAction('doHover')<CR>
+"autocmd CursorHold * silent call CocActionAsync('doHover')
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
