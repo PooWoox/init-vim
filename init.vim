@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
@@ -44,6 +45,8 @@ nnoremap <leader>y "*y
 nnoremap <leader>l <c-w>l
 nnoremap <leader>h <c-w>h
 nnoremap <leader>/ :noh<return><esc>
+nnoremap <leader>140 :vertical resize 140<return><esc>
+nnoremap <leader>100 :vertical resize 100<return><esc>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
@@ -57,3 +60,5 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Opens NERD tree
+map <C-b> :NERDTreeToggle<CR>
