@@ -1,4 +1,8 @@
 call plug#begin()
+Plug 'mattn/emmet-vim'
+Plug 'ap/vim-css-color'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/vim-gitbranch'
@@ -12,6 +16,7 @@ Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 let g:lightline = {
+    \ 'colorscheme': 'default',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -21,8 +26,11 @@ let g:lightline = {
     \ },
     \ }
 
+if has('termguicolors')
+  set termguicolors
+endif
 
-let g:vim_monokai_tasty_italic = 1
+let g:vim_monokai_tasty_italic = 1 
 colorscheme vim-monokai-tasty
 
 filetype plugin indent on
@@ -38,6 +46,7 @@ set splitright
 
 let mapleader="\<space>"
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>bv :vsplit ~/rodrigo/Documents/draft.md<cr>
 nnoremap <leader>nv :vsplit <cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
@@ -62,3 +71,9 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Opens NERD tree
 map <C-b> :NERDTreeToggle<CR>
+
+" Emmet remap
+let g:user_emmet_leader_key='<c-s>'
+let g:user_emmet_expandabbr_key = ','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
