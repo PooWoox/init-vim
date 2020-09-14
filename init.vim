@@ -1,4 +1,8 @@
 call plug#begin()
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim'
+Plug 'joshdick/onedark.vim'
 Plug 'mattn/emmet-vim'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-surround'
@@ -8,7 +12,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/vim-gitbranch'
 Plug 'itchyny/lightline.vim'
 Plug 'turbio/bracey.vim'
-Plug 'patstockwell/vim-monokai-tasty'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -16,7 +19,7 @@ Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 let g:lightline = {
-    \ 'colorscheme': 'default',
+    \ 'colorscheme': 'onedark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -26,12 +29,18 @@ let g:lightline = {
     \ },
     \ }
 
-if has('termguicolors')
-  set termguicolors
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-let g:vim_monokai_tasty_italic = 1 
-colorscheme vim-monokai-tasty
+"if (has("termguicolors"))
+  "set termguicolors
+"endif
+
+syntax on
+set background=dark
+colorscheme palenight
 
 filetype plugin indent on
 set tabstop=2
@@ -62,6 +71,9 @@ nmap ++ <plug>NERDCommenterToggle
 "Opens file in browser
 nnoremap <leader>f :exe ':silent !firefox %'<CR>
 
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
+
 nmap <silent> K :call CocAction('doHover')<CR>
 "autocmd CursorHold * silent call CocActionAsync('doHover')
 nmap <silent> gd <Plug>(coc-definition)
@@ -73,7 +85,5 @@ nmap <silent> gr <Plug>(coc-references)
 map <C-b> :NERDTreeToggle<CR>
 
 " Emmet remap
-let g:user_emmet_leader_key='<c-s>'
-let g:user_emmet_expandabbr_key = ','
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
