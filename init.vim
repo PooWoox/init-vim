@@ -1,5 +1,5 @@
 call plug#begin()
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'sainnhe/sonokai'
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim'
 Plug 'joshdick/onedark.vim'
@@ -19,7 +19,7 @@ Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 let g:lightline = {
-    \ 'colorscheme': 'onedark',
+    \ 'colorscheme': 'default',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -29,18 +29,14 @@ let g:lightline = {
     \ },
     \ }
 
-if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if (has("termguicolors"))
+  set termguicolors
 endif
 
-"if (has("termguicolors"))
-  "set termguicolors
-"endif
-
-syntax on
-set background=dark
-colorscheme palenight
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
+colorscheme sonokai
 
 filetype plugin indent on
 set tabstop=2
