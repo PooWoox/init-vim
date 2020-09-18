@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/rodrigo/Documents/rust/guessing_game'
 let g:netrw_dirhist_3='/home/rodrigo/Documents/Programming/petbit/src/services'
 let g:netrw_dirhist_2='/home/rodrigo/Documents/Programming/petbit/src'
 let g:netrw_dirhist_1='/home/rodrigo/Documents/Programming/petbit'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_8='/home/rodrigo/Documents/Programming/JavaScript30/17 - Sor
 let g:netrw_dirhist_7='/home/rodrigo/Documents/Programming/JavaScript30'
 let g:netrw_dirhist_6='/home/rodrigo/Documents/Programming/JavaScript30/17 - Sort Without Articles'
 let g:netrw_dirhist_5='/home/rodrigo/Documents/portal-v32'
-let g:netrw_dirhist_4='/home/rodrigo/Documents'
