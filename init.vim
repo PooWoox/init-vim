@@ -1,8 +1,9 @@
 call plug#begin()
+Plug 'ayu-theme/ayu-vim'
 Plug 'sainnhe/sonokai'
 Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'joshdick/onedark.vim'
 Plug 'mattn/emmet-vim'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-surround'
@@ -33,10 +34,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:sonokai_style = 'andromeda'
-let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 1
-colorscheme sonokai
+let ayucolor="mirage"
+colorscheme ayu
 
 filetype plugin indent on
 set tabstop=2
@@ -57,9 +56,10 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
 nnoremap <leader>y "*y
 nnoremap <leader>l <c-w>l
-nnoremap <leader>h <c-w>h
+nnoremap <leader>m <c-w>h
 nnoremap <leader>/ :noh<return><esc>
 nnoremap <leader>140 :vertical resize 140<return><esc>
+nnoremap <leader>120 :vertical resize 120<return><esc>
 nnoremap <leader>100 :vertical resize 100<return><esc>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
