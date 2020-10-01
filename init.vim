@@ -1,5 +1,5 @@
 call plug#begin()
-Plug 'ayu-theme/ayu-vim'
+Plug 'tomasiser/vim-code-dark'
 Plug 'sainnhe/sonokai'
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'HerringtonDarkholme/yats.vim'
@@ -20,7 +20,7 @@ Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 let g:lightline = {
-    \ 'colorscheme': 'default',
+    \ 'colorscheme': 'codedark',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -34,8 +34,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let ayucolor="mirage"
-colorscheme ayu
+"let g:sonokai_style = 'atlantis'
+"let g:sonokai_enable_italic = 1
+colorscheme codedark
 
 filetype plugin indent on
 set tabstop=2
